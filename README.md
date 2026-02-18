@@ -1,4 +1,4 @@
-# 📊 E-Commerce Performance & Crisis Investigation 
+# 📊 E-Commerce Performance & Crisis Investigation
 
 ![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge) ![Tools](https://img.shields.io/badge/Tools-Python%20|%20SQL%20|%20PowerBI-blue?style=for-the-badge)
 
@@ -10,21 +10,51 @@ As a **Data Analyst**, I simulated a real-world scenario: taking raw, messy data
 
 ---
 
-## 🛠️ Tech Stack & Methodology
+## 🧪 Data Cleaning & Engineering Pipeline
+*Standard Excel was insufficient for the volume and complexity of the raw data. I utilized **Python (Pandas)** to build a robust cleaning pipeline:*
 
-### 1️⃣ Python (Data Cleaning & Preprocessing) 🐍
-Standard Excel was insufficient for the volume and messiness of the raw data. I utilized **Pandas** to:
-* Handle missing values and standardize inconsistent date formats.
-* Parse complex address strings to extract geographic data (City/Governorate).
-* Engineer new features, such as `Net_Profit` and `Delivery_Time_Gap`.
+### 1️⃣ Missing Values Strategy (Handling Nulls)
+Categorized missing data into three specific actions based on business context:
+* **Action A: Drop (Remove Data)**
+    * Rows with missing `campaign_id` in Ad Spend (<0.5%) were dropped as spend cannot be attributed to a non-existent campaign.
+    * Columns with 100% nulls (e.g., `internal_flag`) were removed entirely.
+* **Action B: Impute (Fill Data)**
+    * `utm_source`: Imputed with **'unknown'** to preserve total session counts for traffic analysis.
+    * `gender`: Imputed with **'Unknown'** to keep these customers visible as a demographic segment.
+    * `session_id` (Orders): Imputed with **'offline_or_missing'** to retain revenue data from Call Center orders or tracking failures.
+* **Action C: Intentional Ignore (Keep as Null)**
+    * `end_date`: Kept Null to indicate **Active/Ongoing** campaigns.
+    * `customer_id`: Kept Null to represent **Guest/Anonymous Visitors**.
 
-### 2️⃣ SQL (Root Cause Analysis) 🔍
+### 2️⃣ Standardization & Entity Mapping
+Addressed inconsistent naming conventions to ensure accurate aggregation:
+* **Text Normalization:** Converted all categorical text to lowercase (e.g., `MOBILE` → `mobile`) and trimmed "ghost" whitespaces.
+* **Entity Mapping:**
+    * *Traffic Sources:* Mapped `fb`, `Meta`, `facebook ads` → **`facebook`**.
+    * *Payment Methods:* Mapped `cod`, `Cash` → **`cash on delivery`**.
+
+### 3️⃣ Business Logic & Sanity Checks
+Fixed data points that were technically valid but logically impossible:
+* **Session "Time Travel":** Removed sessions with negative duration (End Time < Start Time) or extreme duration (> 6 hours) to prevent skewing averages.
+* **Negative Financials:** Converted negative values in `price` or `shipping_cost` to absolute numbers (fixing data entry sign errors).
+* **Logic Conflicts:** Removed campaigns where `end_date` was earlier than `start_date`.
+
+### 4️⃣ Financial Accuracy Audit
+* **Calculation Correction:** Discovered ~1% of orders had incorrect totals due to system errors. Overwrote `total_amount` using the formula:
+    > $$(Subtotal + Shipping + Tax) - Discount$$
+* **Orphan Orders:** Identified orders linked to non-existent `customer_id`. instead of deleting revenue, I set the ID to Null to attribute it to "Unknown Customer".
+
+---
+
+## 🛠️ Analysis Methodology
+
+### 1️⃣ SQL (Root Cause Analysis) 🔍
 Used **SQL** to perform hypothesis testing and validate insights found in the dashboard:
 * **Geographic Analysis:** Compared sales performance between Cairo (Capital) and Delta regions to isolate the drop.
 * **Device & Tech Analysis:** Identified a technical gap between **Mobile App** vs. **Desktop** users.
 * **Payment Analysis:** Debunked the myth that "Cash on Delivery" drives cancellations.
 
-### 3️⃣ Power BI (Interactive Dashboard) 📊
+### 2️⃣ Power BI (Interactive Dashboard) 📊
 Built a dynamic report focused on actionable KPIs using:
 * **DAX Measures:** Calculated complex metrics like `Cancellation Rate %`, `ROAS`, and `Attribution Loss`.
 * **Data Storytelling:** Designed the layout to guide stakeholders from the "What" (Revenue) to the "Why" (The Bug).
@@ -53,9 +83,6 @@ Built a dynamic report focused on actionable KPIs using:
 ### 1. Executive Summary
 *Visualizing the paradox of high revenue vs. low satisfaction.*
 <img width="1328" height="630" alt="First_dashboard" src="https://github.com/user-attachments/assets/cf261a3c-4cdb-48d1-a753-1a3c73354a5e" />
-
-
-
 
 ---
 
