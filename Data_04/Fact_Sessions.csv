@@ -1,0 +1,20 @@
+session_id,customer_id,session_start_ts,session_end_ts,traffic_source,utm_source,utm_medium,utm_campaign,device_type,landing_page,notes ,internal_flag
+S0000000001,C00006557,4/8/2025 9:08,4/8/2025 9:11,gAds,Google,,google_campaign_72,MOBILE,/search,,
+S0000000002,C00117758,4/11/2025 18:00,4/11/2025 18:24,instagram,IG,,TikTok_Conversions_Electronics_Dec2024,desktop,/search,,B
+S0000000003,C00099231,9/19/2024 14:53,9/19/2024 15:03,Google Ads,,ppc,google_campaign_13,Mobile,/about,,B
+S0000000004,,6/29/2025 9:17,6/29/2025 9:24,direct,direct,,direct_campaign_82,desktop,/about,,B
+S0000000005,C00014664,2/20/2025 18:51,2/20/2025 18:52,Tik Tok,tiktok,paid,tiktok_campaign_59,mobile,/electronics,,
+S0000000006,C00068877,9/12/2025 20:25,9/12/2025 20:26,Google,Google,,,DESKTOP,/home,,B
+S0000000007,C00122697,12/24/2025 10:35,12/24/2025 10:36,fb,FB,,facebook_campaign_93,Desktop,/category/fashion,,A
+S0000000008,C00027895,5/2/2025 19:32,5/2/2025 19:48,fb,fb,social,,Mobile,/electronics,,A
+S0000000009,C00148730,9/19/2024 6:31,9/19/2024 6:38,Organic,Organic Search,,organic_campaign_28,DESKTOP,/search,,A
+S0000000010,C00104594,7/18/2025 12:33,7/18/2025 12:42,Meta,Meta,social,Affiliate_Retargeting_Mobile_Jan2024,Desktop,/home,,
+S0000000011,C00127249,2/5/2025 14:46,2/5/2025 14:47,Meta,facebook,,TikTok_Awareness_Ramadan_Feb2024,MOBILE,/,,
+S0000000012,C00025800,9/1/2024 12:21,9/1/2024 12:49,Meta,,,facebook_campaign_10,MOBILE,/home,,A
+S0000000013,C00141712,7/16/2024 22:59,7/16/2024 23:13,google,Google,,,Mobile,/fashion,,B
+S0000000014,C00145692,11/11/2025 8:18,11/11/2025 8:19,Google Ads,Google,organic,google_campaign_8,tablet,/products,,A
+S0000000015,C00061658,8/18/2025 7:56,8/18/2025 7:57,none,(direct),referral,Google Search_Awareness_Mobile_Q42025,MOBILE,/about,,B
+S0000000016,C00019017,7/10/2024 12:36,7/10/2024 12:37,IG,instagram,cpc,instagram_campaign_39,DESKTOP,/category/fashion,,A
+S0000000017,C00145386,5/3/2025 21:06,5/3/2025 21:08,fb,FB,paid-social,facebook_campaign_34,Mobile,/,,A
+S0000000018,C00072531,8/15/2024 0:49,8/15/2024 0:54,newsletter,Email,,email_campaign_70,Mobile,/category/beauty,,
+S0000000019,,11/8/2024 3:23,11/8/2024 3:27,FB,facebook,paid-social,facebook_campaign_53,tablet,/electronics,,A

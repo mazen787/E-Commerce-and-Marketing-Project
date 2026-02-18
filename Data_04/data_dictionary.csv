@@ -1,0 +1,57 @@
+table_name,column_name,description,data_type,example_value,notes_about_quality_issues
+Dim_Customers,customer_id,Unique customer identifier,STRING,C00000001,Primary key
+Dim_Customers,first_name,Customer first name (Arabic transliterated),STRING,Mohamed,No nulls
+Dim_Customers,last_name,Customer last name,STRING,Hassan,No nulls
+Dim_Customers,email,Customer email address,STRING,mohamed.hassan@gmail.com,"~5% missing, ~1.5% duplicates, ~0.7% invalid formats"
+Dim_Customers,gender,Customer gender,STRING,"Male, Female",~8% missing
+Dim_Customers,birth_date,Customer date of birth,DATE,1990-05-15,~10% missing
+Dim_Customers,city,Egyptian city of residence,STRING,"Cairo, Alexandria, Giza","No nulls, 23 cities"
+Dim_Customers,join_date,Date customer registered,DATE,2024-08-15,~0.2% missing
+Dim_Customers,first_touch_date,Date of first website visit,DATE,2024-08-01,Usually before or same as join_date
+Dim_Customers,acquisition_source,Marketing channel that acquired customer,STRING,"Facebook, Google Search, Instagram",No nulls
+Dim_Customers,customer_status,Current customer status,STRING,"Active, Inactive, Churned",No nulls
+Dim_Campaigns,campaign_id,Unique campaign identifier,STRING,CMP00001,Primary key
+Dim_Campaigns,campaign_name,Campaign name,STRING,Facebook_Conversions_Electronics_Q32025,No nulls
+Dim_Campaigns,channel,Marketing channel,STRING,"Facebook, Instagram, Google Search",No nulls
+Dim_Campaigns,objective,Campaign objective,STRING,"Traffic, Conversions, Awareness",No nulls
+Dim_Campaigns,start_date,Campaign start date,DATE,2024-07-15,No nulls
+Dim_Campaigns,end_date,Campaign end date (NULL if active),DATE,2024-12-31,~30% NULL (active campaigns)
+Dim_Campaigns,status,Campaign status,STRING,"Active, Completed, Paused, Cancelled",No nulls
+Fact_Daily_Ad_Spend,date,Date of ad spend,DATE,2024-07-01,No nulls
+Fact_Daily_Ad_Spend,campaign_id ,Campaign identifier (HAS TRAILING SPACE!),STRING,CMP00001,~1% missing or invalid IDs
+Fact_Daily_Ad_Spend,platform,Advertising platform,STRING,"Facebook Ads, Google Ads, TikTok Ads",No nulls
+Fact_Daily_Ad_Spend,impressions,Number of ad impressions,INTEGER,150000,No nulls
+Fact_Daily_Ad_Spend,clicks,Number of clicks,INTEGER,2500,"No nulls, always < impressions"
+Fact_Daily_Ad_Spend,spend_amount,Daily spend in EGP,FLOAT,4500.50,"No nulls, ~0.5% have extreme spikes"
+Fact_Daily_Ad_Spend,conversions_reported,Conversions reported by platform,INTEGER,45,"Platform-reported, may differ from actual orders"
+Fact_Sessions,session_id,Unique session identifier,STRING,S0000000001,Primary key
+Fact_Sessions,customer_id,Customer identifier (NULL for anonymous),STRING,C00000001,~20% NULL (anonymous visitors)
+Fact_Sessions,session_start_ts,Session start timestamp,TIMESTAMP,2024-08-15 14:35:22,"No nulls, ~0.5% end<start errors"
+Fact_Sessions,session_end_ts,Session end timestamp,TIMESTAMP,2024-08-15 14:47:18,"No nulls, ~0.5% duration outliers (6+ hrs)"
+Fact_Sessions,traffic_source,Traffic source (inconsistent!),STRING,"Facebook, facebook, FB, Meta",Inconsistent casing and naming
+Fact_Sessions,utm_source,UTM source parameter,STRING,"Facebook, google","~15% missing, TRACKING BREAK 2025-09-01 to 2025-09-20 for Meta"
+Fact_Sessions,utm_medium,UTM medium parameter,STRING,"cpc, social, organic",~20-27% missing
+Fact_Sessions,utm_campaign,UTM campaign parameter,STRING,Facebook_Traffic_Summer_Q32024,"~18% missing, TRACKING BREAK period"
+Fact_Sessions,device_type,Device type (inconsistent!),STRING,"mobile, Mobile, MOBILE, desktop",Inconsistent casing
+Fact_Sessions,landing_page,Landing page URL,STRING,"/, /products, /electronics",No nulls
+Fact_Sessions,notes ,Irrelevant column (HAS TRAILING SPACE!),STRING,NULL,"All NULL, ignore this column"
+Fact_Sessions,internal_flag,Irrelevant internal flag,STRING,"A, B, NULL",Ignore this column
+Fact_Orders,order_id,Unique order identifier,STRING,O0000000001,Primary key
+Fact_Orders,customer_id,Customer identifier,STRING,C00000001,~0.5% invalid IDs
+Fact_Orders,session_id,Session identifier (NULL for offline),STRING,S0000000001,"~15% NULL (offline/call center), ~1% invalid"
+Fact_Orders,order_date,Order placement date,DATE,2024-08-15,No nulls
+Fact_Orders,order_status,Order status,STRING,"Completed, Pending, Cancelled, Returned",No nulls
+Fact_Orders,product_category,Product category,STRING,"Electronics, Fashion, Beauty","No nulls, 12 categories"
+Fact_Orders,subtotal,Order subtotal before tax/shipping,FLOAT,1250.00,~0.3% outliers (bulk orders 10K+)
+Fact_Orders,shipping_fee,Shipping fee,FLOAT,35.00,No nulls
+Fact_Orders,tax_amount,Tax amount (14% VAT),FLOAT,175.00,No nulls
+Fact_Orders,discount_amount,Discount amount,FLOAT,50.00,"No nulls, 0 for ~60% orders"
+Fact_Orders,total_amount,Total order amount,FLOAT,1410.00,"Should equal subtotal+shipping+tax-discount, ~1% have calculation errors"
+Fact_Orders,payment_method,Payment method (inconsistent!),STRING,"Card, card, Cash, COD, Wallet",Inconsistent casing
+Fact_Orders,delivery_date,Actual delivery date,DATE,2024-08-20,"Usually 1-10 days after order, ~0.5% outliers (30-60 days)"
+Fact_Support_Tickets,ticket_id,Unique ticket identifier,STRING,T0000000001,Primary key
+Fact_Support_Tickets,customer_id,Customer identifier,STRING,C00000001,~0.5% invalid IDs
+Fact_Support_Tickets,order_id,Related order identifier (NULL for general),STRING,O0000000001,"~10% NULL (general inquiries), ~0.5% invalid"
+Fact_Support_Tickets,issue_type,Type of support issue,STRING,"Delivery Delay, Product Quality, Payment Issue",No nulls
+Fact_Support_Tickets,resolution_time_hours,Time to resolve (hours),FLOAT,12.5,"No nulls, higher for affected cities after 2025-08-15"
+Fact_Support_Tickets,csat_score,Customer satisfaction score (1-5),INTEGER,4,"~15% missing, inversely related to resolution_time"

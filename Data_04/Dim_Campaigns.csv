@@ -1,0 +1,20 @@
+campaign_id,campaign_name,channel,objective,start_date,end_date,status
+CMP00001,Instagram_Traffic_Mobile_Nov2025,Instagram,Traffic,10/15/2024,1/1/2025,Completed
+CMP00002,Affiliate_Awareness_Mobile_Jan2025,Affiliate,Awareness,8/22/2024,2/12/2025,Completed
+CMP00003,Affiliate_Traffic_Summer_Oct2025,Affiliate,Traffic,1/3/2025,,Active
+CMP00004,Google Display_Conversions_Winter_Sep2025,Google Display,Conversions,11/1/2024,,Active
+CMP00005,Google Display_Conversions_Ramadan_Q42025,Google Display,Conversions,12/29/2024,,Active
+CMP00006,Google Display_Traffic_Fashion_May2024,Google Display,Traffic,6/26/2025,10/17/2025,Completed
+CMP00007,Email_Conversions_Mobile_Mar2024,Email,Conversions,8/4/2024,12/30/2024,Cancelled
+CMP00008,Google Search_Retargeting_Beauty_Jun2025,Google Search,Retargeting,8/12/2024,9/24/2024,Completed
+CMP00009,TikTok_Traffic_Summer_Jan2025,TikTok,Traffic,1/10/2025,5/26/2025,Completed
+CMP00010,Google Display_Traffic_All_Q42024,Google Display,Traffic,6/5/2025,9/29/2025,Completed
+CMP00011,Instagram_Engagement_Beauty_Mar2024,Instagram,Engagement,9/21/2024,,Active
+CMP00012,Instagram_Conversions_Ramadan_Oct2024,Instagram,Conversions,12/2/2025,,Active
+CMP00013,Google Display_Conversions_All_Apr2024,Google Display,Conversions,6/12/2025,11/29/2025,Completed
+CMP00014,Google Display_Traffic_Winter_Q12024,Google Display,Traffic,3/20/2025,8/16/2025,Paused
+CMP00015,TikTok_Engagement_Fashion_May2024,TikTok,Engagement,10/6/2024,,Active
+CMP00016,Affiliate_Traffic_Mobile_Aug2025,Affiliate,Traffic,12/6/2024,1/22/2025,Paused
+CMP00017,Instagram_Conversions_Winter_Q12024,Instagram,Conversions,8/29/2024,10/7/2024,Completed
+CMP00018,Affiliate_Retargeting_Mobile_Jan2024,Affiliate,Retargeting,10/29/2025,12/19/2025,Completed
+CMP00019,Instagram_Engagement_Fashion_Q22024,Instagram,Engagement,1/9/2025,3/12/2025,Completed
