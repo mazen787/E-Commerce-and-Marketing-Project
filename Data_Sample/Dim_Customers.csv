@@ -1,0 +1,20 @@
+customer_id,first_name,last_name,email,gender,birth_date,city,join_date,first_touch_date,acquisition_source,customer_status
+C00000001,Mohamed,Hamdy,mohamedhamdy@yahoo.com,Male,,Alexandria,9/13/2024,9/6/2024,Google Search,Active
+C00000002,Amr,Fathy,amr64@yahoo.com,Male,1/17/1984,Suez,2/4/2025,1/16/2025,Referral,Active
+C00000003,Mahmoud,Mohamed,mahmoud94@gmail.com,Male,4/20/1983,Giza,9/23/2024,9/18/2024,Google Search,Active
+C00000004,Hala,Salem,halasalem@hotmail.com,Female,,Giza,9/10/2024,8/12/2024,Google Display,Active
+C00000005,Youssef,Hamdy,youssef81@outlook.com,Male,11/4/1973,Cairo,8/8/2024,8/6/2024,Instagram,Active
+C00000006,Rania,Salem,rania.salem@gmail.com,Female,2/8/1999,Alexandria,11/25/2024,10/29/2024,Google Display,Inactive
+C00000007,Omar,Sayed,omar.sayed@hotmail.com,Male,2/12/1955,Giza,11/15/2024,10/22/2024,Google Search,Active
+C00000008,Noha,Mahmoud,noham640@yahoo.com,Female,8/3/1980,Mansoura,1/29/2025,1/11/2025,Google Search,Active
+C00000009,Mahmoud,Fathy,mahmoudfathy@gmail.com,,11/11/1963,Cairo,10/12/2024,10/9/2024,Google Display,Active
+C00000010,Laila,Nasr,laila.nasr@gmail.com,Female,10/8/1993,Alexandria,8/31/2024,8/30/2024,Google Display,Active
+C00000011,Mahmoud,Othman,mahmoudo270@outlook.com,Male,12/19/2005,Giza,9/1/2024,8/15/2024,Google Display,Active
+C00000012,Mostafa,Khalil,mostafa.khalil@hotmail.com,Male,6/9/1996,Sohag,9/3/2024,8/31/2024,Direct,Active
+C00000013,Osama,Ali,osama63@hotmail.com,Male,8/21/1963,Giza,1/14/2025,12/16/2024,Instagram,Active
+C00000014,Tarek,Nasser,tarek30@gmail.com,Male,2/23/1998,Cairo,12/2/2024,11/26/2024,TikTok,Inactive
+C00000015,Salma,Badawi,salmab194@hotmail.com,Female,11/25/1995,Port Said,4/27/2025,4/9/2025,Google Search,Active
+C00000016,Mostafa,Sayed,mostafasayed@yahoo.com,Male,4/28/1967,Qena,10/21/2024,10/16/2024,TikTok,Active
+C00000017,Shimaa,Nasr,,Female,1/15/1977,Giza,8/17/2024,8/9/2024,Instagram,Active
+C00000018,Fatma,Ibrahim,fatma43@gmail.com,Female,10/28/1967,Cairo,10/5/2024,9/5/2024,TikTok,Active
+C00000019,Rana,Ali,rana95@gmail.com,Female,7/21/1980,Giza,10/22/2024,10/3/2024,Google Search,Active
