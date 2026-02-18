@@ -1,4 +1,4 @@
-# 📊 E-Commerce Performance & Crisis Investigation (Q3 Analysis)
+# 📊 E-Commerce Performance & Crisis Investigation 
 
 ![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge) ![Tools](https://img.shields.io/badge/Tools-Python%20|%20SQL%20|%20PowerBI-blue?style=for-the-badge)
 
@@ -52,13 +52,9 @@ Built a dynamic report focused on actionable KPIs using:
 
 ### 1. Executive Summary
 *Visualizing the paradox of high revenue vs. low satisfaction.*
-![Main Dashboard](02_Dashboard_Visuals/Main_Dashboard.png)
+![Main Dashboard]![Uploading First_dashboard.png…]
 
-### 2. Root Cause Analysis (SQL Evidence)
-*The query result proving the Mobile App crash vs. Desktop stability.*
-![SQL Analysis](02_Dashboard_Visuals/Mobile_Analysis.png)
 
-*(Note: Please ensure image filenames match those in the `Dashboard_Visuals` folder)*
 
 ---
 
