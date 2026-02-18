@@ -1,0 +1,57 @@
+table_name,column_name,description
+Dim_Customers,customer_id,Unique customer identifier
+Dim_Customers,first_name,Customer first name (Arabic transliterated)
+Dim_Customers,last_name,Customer last name
+Dim_Customers,email,Customer email address
+Dim_Customers,gender,Customer gender
+Dim_Customers,birth_date,Customer date of birth
+Dim_Customers,city,Egyptian city of residence
+Dim_Customers,join_date,Date customer registered
+Dim_Customers,first_touch_date,Date of first website visit
+Dim_Customers,acquisition_source,Marketing channel that acquired customer
+Dim_Customers,customer_status,Current customer status
+Dim_Campaigns,campaign_id,Unique campaign identifier
+Dim_Campaigns,campaign_name,Campaign name
+Dim_Campaigns,channel,Marketing channel
+Dim_Campaigns,objective,Campaign objective
+Dim_Campaigns,start_date,Campaign start date
+Dim_Campaigns,end_date,Campaign end date (NULL if active)
+Dim_Campaigns,status,Campaign status
+Fact_Daily_Ad_Spend,date,Date of ad spend
+Fact_Daily_Ad_Spend,campaign_id ,Campaign identifier (HAS TRAILING SPACE!)
+Fact_Daily_Ad_Spend,platform,Advertising platform
+Fact_Daily_Ad_Spend,impressions,Number of ad impressions
+Fact_Daily_Ad_Spend,clicks,Number of clicks
+Fact_Daily_Ad_Spend,spend_amount,Daily spend in EGP
+Fact_Daily_Ad_Spend,conversions_reported,Conversions reported by platform
+Fact_Sessions,session_id,Unique session identifier
+Fact_Sessions,customer_id,Customer identifier (NULL for anonymous)
+Fact_Sessions,session_start_ts,Session start timestamp
+Fact_Sessions,session_end_ts,Session end timestamp
+Fact_Sessions,traffic_source,Traffic source (inconsistent!)
+Fact_Sessions,utm_source,UTM source parameter
+Fact_Sessions,utm_medium,UTM medium parameter
+Fact_Sessions,utm_campaign,UTM campaign parameter
+Fact_Sessions,device_type,Device type (inconsistent!)
+Fact_Sessions,landing_page,Landing page URL
+Fact_Sessions,notes ,Irrelevant column (HAS TRAILING SPACE!)
+Fact_Sessions,internal_flag,Irrelevant internal flag
+Fact_Orders,order_id,Unique order identifier
+Fact_Orders,customer_id,Customer identifier
+Fact_Orders,session_id,Session identifier (NULL for offline)
+Fact_Orders,order_date,Order placement date
+Fact_Orders,order_status,Order status
+Fact_Orders,product_category,Product category
+Fact_Orders,subtotal,Order subtotal before tax/shipping
+Fact_Orders,shipping_fee,Shipping fee
+Fact_Orders,tax_amount,Tax amount (14% VAT)
+Fact_Orders,discount_amount,Discount amount
+Fact_Orders,total_amount,Total order amount
+Fact_Orders,payment_method,Payment method (inconsistent!)
+Fact_Orders,delivery_date,Actual delivery date
+Fact_Support_Tickets,ticket_id,Unique ticket identifier
+Fact_Support_Tickets,customer_id,Customer identifier
+Fact_Support_Tickets,order_id,Related order identifier (NULL for general)
+Fact_Support_Tickets,issue_type,Type of support issue
+Fact_Support_Tickets,resolution_time_hours,Time to resolve (hours)
+Fact_Support_Tickets,csat_score,Customer satisfaction score (1-5)
