@@ -37,7 +37,7 @@ Sales_Metrics AS (
         SUM(O.total_amount) AS Total_Revenue
     FROM Clean_Fact_Orders O
     JOIN Clean_Fact_Sessions S ON O.session_id = S.session_id
-    WHERE O.order_status != 'Cancelled' -- »‰Õ”» »” «·√Ê—œ—«  «·ÕﬁÌﬁÌ…
+    WHERE O.order_status != 'Cancelled' -- √à√§√ç√ì√à √à√ì √á√°√É√¶√ë√è√ë√á√ä √á√°√ç√û√≠√û√≠√â
     GROUP BY S.device_type
 )
 
@@ -119,7 +119,7 @@ SELECT
     CAST((R.Total_Revenue / NULLIF(S.Total_Spend, 0)) AS DECIMAL(10,2)) AS ROAS
 
 FROM Revenue_Metrics R
-JOIN Spend_Metrics S ON R.platform = S.platform -- »‰—»ÿ »«”„ «·„‰’…
+JOIN Spend_Metrics S ON R.platform = S.platform -- √à√§√ë√à√ò √à√á√ì√£ √á√°√£√§√ï√â
 ORDER BY ROAS DESC;
 
 
@@ -293,7 +293,7 @@ ORDER BY SUM(O.total_amount) DESC;
 */
 
 WITH Monthly_Sales AS (
-    -- 1.  Ã„Ì⁄ «·„»Ì⁄«  »«·‘ÂÊ—
+    -- 1. √ä√å√£√≠√ö √á√°√£√à√≠√ö√á√ä √à√á√°√î√•√¶√ë
     SELECT 
         FORMAT(order_date, 'yyyy-MM') AS Sales_Month,
         SUM(total_amount) AS Current_Revenue
@@ -379,7 +379,7 @@ WITH Period_Analysis AS (
         COUNT(DISTINCT o.order_date) AS Days_Count
     FROM Clean_Fact_Orders o
     JOIN Clean_Dim_Customers c ON o.customer_id = c.customer_id
-    WHERE o.order_date BETWEEN '2025-07-15' AND '2025-09-15' -- „ﬁ«—‰… ‘Â— ﬁ»· Ê‘Â— »⁄œ
+    WHERE o.order_date BETWEEN '2025-07-15' AND '2025-09-15' -- √£√û√á√ë√§√â √î√•√ë √û√à√° √¶√î√•√ë √à√ö√è
     GROUP BY c.city, 
              CASE 
                 WHEN o.order_date < '2025-08-15' THEN '1. Pre-Issue'
