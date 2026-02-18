@@ -52,7 +52,8 @@ Built a dynamic report focused on actionable KPIs using:
 
 ### 1. Executive Summary
 *Visualizing the paradox of high revenue vs. low satisfaction.*
-![Uploading First_dashboard.png]
+<img width="1328" height="630" alt="First_dashboard" src="https://github.com/user-attachments/assets/cf261a3c-4cdb-48d1-a753-1a3c73354a5e" />
+
 
 
 
