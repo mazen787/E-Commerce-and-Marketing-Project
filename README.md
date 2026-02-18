@@ -11,38 +11,12 @@ As a **Data Analyst**, I simulated a real-world scenario: taking raw, messy data
 ---
 
 ## 🧪 Data Cleaning & Engineering Pipeline
-*Standard Excel was insufficient for the volume and complexity of the raw data. I utilized **Python (Pandas)** to build a robust cleaning pipeline:*
+*Standard Excel was insufficient for the volume of raw data. I utilized **Python (Pandas)** to implement a robust cleaning strategy:*
 
-### 1️⃣ Missing Values Strategy (Handling Nulls)
-Categorized missing data into three specific actions based on business context:
-* **Action A: Drop (Remove Data)**
-    * Rows with missing `campaign_id` in Ad Spend (<0.5%) were dropped as spend cannot be attributed to a non-existent campaign.
-    * Columns with 100% nulls (e.g., `internal_flag`) were removed entirely.
-* **Action B: Impute (Fill Data)**
-    * `utm_source`: Imputed with **'unknown'** to preserve total session counts for traffic analysis.
-    * `gender`: Imputed with **'Unknown'** to keep these customers visible as a demographic segment.
-    * `session_id` (Orders): Imputed with **'offline_or_missing'** to retain revenue data from Call Center orders or tracking failures.
-* **Action C: Intentional Ignore (Keep as Null)**
-    * `end_date`: Kept Null to indicate **Active/Ongoing** campaigns.
-    * `customer_id`: Kept Null to represent **Guest/Anonymous Visitors**.
-
-### 2️⃣ Standardization & Entity Mapping
-Addressed inconsistent naming conventions to ensure accurate aggregation:
-* **Text Normalization:** Converted all categorical text to lowercase (e.g., `MOBILE` → `mobile`) and trimmed "ghost" whitespaces.
-* **Entity Mapping:**
-    * *Traffic Sources:* Mapped `fb`, `Meta`, `facebook ads` → **`facebook`**.
-    * *Payment Methods:* Mapped `cod`, `Cash` → **`cash on delivery`**.
-
-### 3️⃣ Business Logic & Sanity Checks
-Fixed data points that were technically valid but logically impossible:
-* **Session "Time Travel":** Removed sessions with negative duration (End Time < Start Time) or extreme duration (> 6 hours) to prevent skewing averages.
-* **Negative Financials:** Converted negative values in `price` or `shipping_cost` to absolute numbers (fixing data entry sign errors).
-* **Logic Conflicts:** Removed campaigns where `end_date` was earlier than `start_date`.
-
-### 4️⃣ Financial Accuracy Audit
-* **Calculation Correction:** Discovered ~1% of orders had incorrect totals due to system errors. Overwrote `total_amount` using the formula:
-    > $$(Subtotal + Shipping + Tax) - Discount$$
-* **Orphan Orders:** Identified orders linked to non-existent `customer_id`. instead of deleting revenue, I set the ID to Null to attribute it to "Unknown Customer".
+* **Handling Missing Data:** Deployed a hybrid strategy; **Imputed** critical fields (e.g., `utm_source`, `gender`) to preserve analytical value, while **Dropping** columns with 100% nulls or garbage data.
+* **Entity Standardization:** Unified inconsistent naming conventions by mapping variations (e.g., `fb`, `Meta` → **`facebook`** / `cod` → **`cash on delivery`**) and normalizing text cases.
+* **Logic & Integrity Checks:** Sanitized invalid records, including **negative session durations**, illogical campaign dates, and "time-travel" timestamps to ensure metric accuracy.
+* **Financial Audit:** Detected system calculation errors in ~1% of orders. Re-engineered the `Total_Amount` column using the formula `(Subtotal + Shipping + Tax) - Discount` to ensure **100% revenue accuracy**.
 
 ---
 
