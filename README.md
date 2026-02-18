@@ -1,87 +1,85 @@
 # 📊 E-Commerce Performance & Crisis Investigation (Q3 Analysis)
 
-![Banner](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge) ![Tools](https://img.shields.io/badge/Tools-Python%20|%20SQL%20|%20PowerBI-blue?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge) ![Tools](https://img.shields.io/badge/Tools-Python%20|%20SQL%20|%20PowerBI-blue?style=for-the-badge)
 
-## 📌 ملخص المشروع (Project Overview)
-هذا المشروع عبارة عن تحليل شامل لأداء متجر إلكتروني خلال الربع الثالث (Q3). الهدف الرئيسي لم يكن مجرد بناء "داشبورد"، بل كان **تحقيق جنائي (Data Investigation)** لحل لغز كبير واجهته الشركة:
-> **"لماذا تحقق الشركة أعلى إيرادات في تاريخها ($389M)، ومع ذلك تنخفض الربحية ويرتفع سخط العملاء بشكل غير مسبوق؟"**
+## 📌 Project Overview
+This project is not just a dashboard; it is a **full-scale data investigation** into a critical business anomaly.
+> **The Problem:** The company achieved record-breaking revenue (**$389M**) in Q3, yet profitability plummeted, and Customer Satisfaction (CSAT) scores dropped to a critical low of **2.7/5**.
 
-قمت بمحاكاة دور **Data Analyst** في بيئة عمل حقيقية، بداية من استلام البيانات الخام "غير النظيفة"، مروراً بتنظيفها برمجياً، ثم تحليل الأسباب الجذرية للمشاكل، وانتهاءً بتقديم توصيات استراتيجية للإدارة العليا.
+As a **Data Analyst**, I simulated a real-world scenario: taking raw, messy data, cleaning it programmatically, performing root cause analysis to find the "bleeding" points, and delivering strategic recommendations to the C-Suite.
 
 ---
 
-## 🛠️ الأدوات والتقنيات المستخدمة (Tech Stack)
+## 🛠️ Tech Stack & Methodology
 
 ### 1️⃣ Python (Data Cleaning & Preprocessing) 🐍
-البيانات الخام كانت تحتوي على مشاكل كثيرة لا يمكن حلها بالإكسيل العادي. استخدمت مكتبة **Pandas** لـ:
-* معالجة القيم المفقودة (Handling Nulls) وتوحيد صيغ التواريخ.
-* استخراج بيانات جغرافية جديدة من عناوين الشحن غير المنظمة.
-* إنشاء أعمدة جديدة (Feature Engineering) لحساب صافي الربح بعد الخصم.
+Standard Excel was insufficient for the volume and messiness of the raw data. I utilized **Pandas** to:
+* Handle missing values and standardize inconsistent date formats.
+* Parse complex address strings to extract geographic data (City/Governorate).
+* Engineer new features, such as `Net_Profit` and `Delivery_Time_Gap`.
 
 ### 2️⃣ SQL (Root Cause Analysis) 🔍
-استخدمت **SQL** للغوص في التفاصيل وإثبات الفرضيات (Hypothesis Testing):
-* **تحليل جغرافي:** لمقارنة الأداء بين القاهرة والأقاليم لاكتشاف تمركز المشكلة.
-* **تحليل الأجهزة:** لاكتشاف الفجوة التقنية بين مستخدمي التطبيق (Mobile) والموقع (Desktop).
-* **تحليل طرق الدفع:** لدحض خرافة أن "الدفع عند الاستلام" هو سبب الخسائر.
+Used **SQL** to perform hypothesis testing and validate insights found in the dashboard:
+* **Geographic Analysis:** Compared sales performance between Cairo (Capital) and Delta regions to isolate the drop.
+* **Device & Tech Analysis:** Identified a technical gap between **Mobile App** vs. **Desktop** users.
+* **Payment Analysis:** Debunked the myth that "Cash on Delivery" drives cancellations.
 
 ### 3️⃣ Power BI (Interactive Dashboard) 📊
-بناء لوحة تحكم تفاعلية تركز على الـ KPIs الحيوية:
-* استخدام **DAX** لحساب مقاييس معقدة مثل (Cancellation Rate, ROAS, Net Profit).
-* تصميم بصري يعتمد على الـ Storytelling لتوجيه العين نحو المشاكل (اللون الأحمر) والفرص (اللون الأخضر).
-
-### 4️⃣ HTML/CSS (Executive Reporting) 📑
-إنشاء عرض تقديمي (Presentation) بتقنيات الويب لعرض النتائج بشكل تفاعلي واحترافي للإدارة.
+Built a dynamic report focused on actionable KPIs using:
+* **DAX Measures:** Calculated complex metrics like `Cancellation Rate %`, `ROAS`, and `Attribution Loss`.
+* **Data Storytelling:** Designed the layout to guide stakeholders from the "What" (Revenue) to the "Why" (The Bug).
 
 ---
 
-## 🔍 أهم المشاكل التي تم حلها (Key Findings)
+## 🔍 Key Findings & "The Smoking Gun"
 
-### 1. لغز انخفاض الطلبات في الدلتا (The Mobile Bug) 📱
-* **الملاحظة:** انخفاض حاد في المبيعات في الإسكندرية ومدن الدلتا بنسبة 21% بعد يوم 15 أغسطس.
-* **التحليل:** عند تقسيم البيانات حسب نوع الجهاز (Device Type)، اكتشفت أن طلبات **Desktop زادت بنسبة 4.3%**، بينما طلبات **Mobile انهارت بنسبة 33%**.
-* **الاستنتاج:** المشكلة ليست في المنتج ولا السعر، بل يوجد **خطأ تقني (Bug)** في نسخة التطبيق الخاصة بالأندرويد يمنع إتمام الشراء في هذه المناطق.
+### 1. The Mobile App Failure (Delta Region) 📱
+* **Observation:** Sales in Alexandria and Delta cities dropped by **~21%** post-August 15th.
+* **Investigation:** Segmenting data by `Device_Type` revealed that **Desktop orders grew by 4.3%**, while **Mobile orders crashed by 33%**.
+* **Conclusion:** The product and pricing are fine. The root cause is a **technical bug** in the Android App affecting checkout in specific regions.
 
-### 2. كارثة التتبع (The $117M Blackout) 📉
-* **المشكلة:** 30% من الإيرادات ($117M) مصدرها "غير معروف" (Unattributed).
-* **السبب:** توقف الـ Meta Pixel عن إرسال البيانات، مما أدى لعمى كامل في حملات التسويق وإهدار الميزانية.
+### 2. The $117M Tracking Disaster 📉
+* **Issue:** **30% of total revenue ($117M)** was flagged as "Unattributed."
+* **Cause:** A Meta Pixel tracking failure occurred on Aug 15th, blinding the marketing team and wasting ad spend on unoptimized campaigns.
 
-### 3. أسطورة "الكاش" (Myth Busting) 💵
-* **الخرافة:** الإدارة كانت تعتقد أن "الدفع عند الاستلام" (COD) يسبب كثرة المرتجعات.
-* **الحقيقة (بالأرقام):** أثبت التحليل أن الـ COD يمتلك **أقل معدل إلغاء (12.9%)** مقارنة بالفيزا، مما أنقذ الشركة من قرار خاطئ بوقف التعامل بالكاش.
-
----
-
-## 📸 نظرة على الداشبورد (Dashboard Preview)
-
-> **الصفحة الرئيسية (Executive View):**
-> توضح التناقض بين الإيرادات العالية وانخفاض رضا العملاء.
-> ![Main Dashboard](02_Dashboard_Visuals/Main_Dashboard.png)
-
-> **تحليل الأسباب الجذرية (SQL Evidence):**
-> إثبات أن الموبايل هو السبب في الخسارة.
-> ![SQL Analysis](02_Dashboard_Visuals/Mobile_Analysis.png)
-*(تأكد من وجود الصور في فولدر `Dashboard_Visuals` بنفس الأسماء)*
+### 3. Myth Busting: Cash on Delivery 💵
+* **Hypothesis:** Management believed COD customers caused high return rates.
+* **Reality:** Data proved that COD actually holds the **lowest cancellation rate (12.9%)** compared to credit cards (13.1%), saving the company from a potentially damaging policy change.
 
 ---
 
-## 🚀 التوصيات الاستراتيجية (Recommendations)
+## 📸 Dashboard & Evidence Previews
 
-بناءً على التحليل، تم تقديم خطة عمل فورية:
-1.  **تقنياً:** إطلاق تحديث طوارئ لتطبيق الموبايل لإصلاح الـ Bug في الدلتا.
-2.  **تسويقياً:** نقل الميزانية فوراً من Google Ads (الخاسر) إلى Facebook (الرابح) وتفعيل CAPI لإصلاح التتبع.
-3.  **خدمة عملاء:** حملة تعويض (Vouchers) لعملاء الإسكندرية الغاضبين لرفع الـ CSAT.
+### 1. Executive Summary
+*Visualizing the paradox of high revenue vs. low satisfaction.*
+![Main Dashboard](02_Dashboard_Visuals/Main_Dashboard.png)
+
+### 2. Root Cause Analysis (SQL Evidence)
+*The query result proving the Mobile App crash vs. Desktop stability.*
+![SQL Analysis](02_Dashboard_Visuals/Mobile_Analysis.png)
+
+*(Note: Please ensure image filenames match those in the `Dashboard_Visuals` folder)*
+
+---
+
+## 🚀 Strategic Recommendations
+
+Based on the analysis, the following action plan was proposed:
+1.  **Technical:** Initiate an immediate **debugging sprint** for the Mobile App (Delta Region) to recover the 33% order loss.
+2.  **Marketing:** Shift budget immediately from Google Ads (Low ROAS) to Facebook (High ROAS) and implement **CAPI (Conversion API)** to fix the tracking loss.
+3.  **Customer Recovery:** Launch a "We are Sorry" campaign with free shipping vouchers for affected users in Alexandria/Port Said to restore CSAT scores.
 
 ---
 
-## 📂 هيكل المشروع (Repository Structure)
+## 📂 Repository Structure
 
-* `📁 01_SQL_Scripts`: أكواد التحليل والتحقيق الجنائي.
-* `📁 02_Dashboard_Visuals`: صور من الداشبورد والتحليلات.
-* `📁 03_Presentation`: العرض التقديمي النهائي (PDF & HTML).
-* `📁 Data_Sample`: عينة من البيانات المستخدمة (لغرض التوضيح فقط).
-* `📄 Data_Cleaning_Process.ipynb`: خطوات تنظيف البيانات باستخدام Python.
+* `📁 01_SQL_Scripts`: Queries used for investigation and hypothesis testing.
+* `📁 02_Dashboard_Visuals`: Screenshots of the Power BI dashboard and key charts.
+* `📁 03_Presentation`: The final executive presentation (PDF & HTML).
+* `📁 Data_Sample`: A sample of the dataset structure (confidential data excluded).
+* `📄 Data_Cleaning_Process.ipynb`: Python notebook documenting the cleaning steps.
 
 ---
-**Author:** Mazen Ashraf  
-**Role:** Data Analyst  
+**Author:** Mazen Ashraf
+**Role:** Data Analyst
 *(Open to work & Collaboration)*
